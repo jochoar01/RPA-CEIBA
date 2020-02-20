@@ -3,12 +3,15 @@
   "description": "Descargar y almacenar PDF necesario para comenzar proceso de insolvencia, se extrae la informacion del mismo y se almacena en el archivo de excel destinado con dicho fin",
   "main": "Main.xaml",
   "dependencies": {
+    "Fare": "[2.1.2]",
+    "FSharp.Text.RegexProvider": "[2.1.0]",
+    "System.Regex": "[1.0.0]",
     "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Excel.Activities": "[2.7.2]",
     "UiPath.Mail.Activities": "[1.7.2]",
     "UiPath.PDF.Activities": "[3.1.0]",
     "UiPath.System.Activities": "[19.10.1]",
-    "UiPath.UIAutomation.Activities": "[19.11.1]"
+    "UiPath.UIAutomation.Activities": "[19.11.2]"
   },
   "webServices": [],
   "schemaVersion": "4.0",

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Execute_XPath" this:Execute_XPath.in_ruta="https://storagelitigiovirtual.blob.core.windows.net/supersociedades/07022020/Aviso-Bucaramanga-Tecnotrailers.PDF" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Execute_XPath" this:Execute_XPath.in_ruta="https://storagelitigiovirtual.blob.core.windows.net/supersociedades/07022020/Apertura-Bogota-Etc.PDF" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_ruta" Type="InArgument(x:String)" />
     <x:Property Name="out_info" Type="OutArgument(x:String)" />
@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>540,1254</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>480,1248</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Execute_XPath_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="24">
+    <scg:List x:TypeArguments="x:String" Capacity="48">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -34,10 +34,11 @@
       <x:String>UiPath.OCR.Contracts</x:String>
       <x:String>System.Drawing.Imaging</x:String>
       <x:String>DocumentFormat.OpenXml.Drawing</x:String>
+      <x:String>System.Regex</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="22">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -60,14 +61,16 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
       <AssemblyReference>DocumentFormat.OpenXml</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Regex</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This is an example for using XPath in order to read the information contained inside an XML file." DisplayName="Execute XPath" sap:VirtualizedContainerService.HintSize="520,1154" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This is an example for using XPath in order to read the information contained inside an XML file." DisplayName="Execute XPath" sap:VirtualizedContainerService.HintSize="460,1148" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="text" />
-      <Variable x:TypeArguments="s:String[]" Name="extraerNombre" />
-      <Variable x:TypeArguments="x:String" Name="rutaProceso" />
-      <Variable x:TypeArguments="ui:GenericValue" Name="rutaProcesada" />
+      <Variable x:TypeArguments="s:String[]" Name="str_dividirRuta" />
+      <Variable x:TypeArguments="x:String" Name="str_rutaProceso" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="str_rutaProcesada" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -75,7 +78,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="478,1020" sap2010:WorkflowViewState.IdRef="Sequence_8">
+    <Sequence sap:VirtualizedContainerService.HintSize="418,1014" sap2010:WorkflowViewState.IdRef="Sequence_8">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="salidaPDF" />
       </Sequence.Variables>
@@ -85,15 +88,15 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
-          <OutArgument x:TypeArguments="s:String[]">[extraerNombre]</OutArgument>
+          <OutArgument x:TypeArguments="s:String[]">[str_dividirRuta]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="s:String[]">[Split(ruta,"/")]</InArgument>
+          <InArgument x:TypeArguments="s:String[]">[Split(in_ruta,"/")]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,229" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
         <ui:CommentOut.Body>
           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
@@ -101,19 +104,25 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[extraerNombre(extraerNombre.Length-1).Replace(&quot;%20&quot;,&quot; &quot;)]" TopMost="True" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[str_dividirRuta(str_dividirRuta.Length-1).Replace(&quot;%20&quot;,&quot; &quot;)]" TopMost="True" />
           </Sequence>
         </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[rutaProceso]</OutArgument>
+          <OutArgument x:TypeArguments="x:String">[str_rutaProceso]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[extraerNombre(extraerNombre.Length-1).Replace("%20"," ")]</InArgument>
+          <InArgument x:TypeArguments="x:String">[str_dividirRuta(str_dividirRuta.Length-1).Replace("%20"," ")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="436,459" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,631" sap2010:WorkflowViewState.IdRef="Sequence_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -129,10 +138,13 @@
             </ActivityFunc>
           </ui:GetOCRText.OCREngine>
           <ui:GetOCRText.Target>
-            <ui:Target Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5ff18c051c6e2e195a16627de70f5d57" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='{{rutaProceso}} - Google Chrome' /&gt;&lt;ctrl name='{{rutaProceso}}' role='document' /&gt;&lt;ctrl name='Página 1' role='pane' /&gt;" WaitForReady="INTERACTIVE">
+            <ui:Target Element="{x:Null}" InformativeScreenshot="74e1dbb67b04f99659901965327d3592" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Apertura-Bogota-Etc.PDF - Google Chrome' /&gt;&lt;ctrl name='Apertura-Bogota-Etc.PDF - Google Chrome' role='pane' /&gt;&lt;ctrl name='Google Chrome' role='pane' /&gt;&lt;ctrl idx='5' role='pane' /&gt;" WaitForReady="INTERACTIVE">
               <ui:Target.ClippingRegion>
-                <ui:Region Rectangle="34, 51, 774, 595" />
+                <ui:Region Rectangle="265, 59, 821, 565" />
               </ui:Target.ClippingRegion>
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
             </ui:Target>
           </ui:GetOCRText.Target>
           <ui:GetOCRText.Text>
@@ -145,6 +157,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:GetOCRText>
+        <ui:WriteTextFile DisplayName="Write Text File" FileName="C:\Users\daniel.hernandez\Desktop\Lecturas\holamundo.txt" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[text]" />
         <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[text]" TopMost="True" />
         <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
           <Assign.To>
